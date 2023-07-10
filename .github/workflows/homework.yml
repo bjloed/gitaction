@@ -12,30 +12,30 @@ jobs:
         matrix:
           python-version: ["3.8"] 
       steps:
-      - uses: actions/checkout@v2
-      - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v4
-        with:
-          python-version: ${{ matrix.python-version }}
+        - uses: actions/checkout@v2
+        - name: Set up Python ${{ matrix.python-version }}
+          uses: actions/setup-python@v4
+          with:
+            python-version: ${{ matrix.python-version }}
 
-      - name: Python Version Query
-        run: |
-          mkdir -p output
-          echo $(python -c "import sys; print(sys.version)") > output/result-${{ matrix.python-version }}.txt  
-      - name: Commit file   
-        run: |
-          git config --global user.name "bjloed"
-          git config --global user.email "bjloed@ajou.ac.kr"
-          git pull
-          git add output/*
-          git commit -m "Add output files for Python ${{ matrix.python-version }}"
-          git push
+        - name: Python Version Query
+          run: |
+            mkdir -p output
+            echo $(python -c "import sys; print(sys.version)") > output/result-${{ matrix.python-version }}.txt  
+        - name: Commit file   
+          run: |
+            git config --global user.name "bjloed"
+            git config --global user.email "bjloed@ajou.ac.kr"
+            git pull
+            git add output/*
+            git commit -m "Add output files for Python ${{ matrix.python-version }}"
+            git push
 
-      - name: Use artifact
-        uses: actions/upload-artifact@v3
-        with:
-          name: hw-python
-          path: output-${{ matrix.python-version }}
+        - name: Use artifact
+          uses: actions/upload-artifact@v3
+          with:
+            name: hw-python
+            path: output-${{ matrix.python-version }}
   jobs2:
     needs: jobs1
     build:
@@ -44,35 +44,35 @@ jobs:
         matrix:
           python-version: ["3.9"] 
       steps:
-      - uses: actions/checkout@v2
-      - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v4
-        with:
-          python-version: ${{ matrix.python-version }}
+        - uses: actions/checkout@v2
+        - name: Set up Python ${{ matrix.python-version }}
+          uses: actions/setup-python@v4
+          with:
+            python-version: ${{ matrix.python-version }}
 
-      - name: Python Version Query
-        run: |
-          mkdir -p output
-          echo $(python -c "import sys; print(sys.version)") > output/result-${{ matrix.python-version }}.txt
-      
-      - name: Python Version Query
-        run: |
-          mkdir -p output
-          echo $(python -c "import sys; print(sys.version)") > output/result-${{ matrix.python-version }}.txt  
-      - name: Commit file   
-        run: |
-          git config --global user.name "bjloed"
-          git config --global user.email "bjloed@ajou.ac.kr"
-          git pull
-          git add output/*
-          git commit -m "Add output files for Python ${{ matrix.python-version }}"
-          git push
+        - name: Python Version Query
+          run: |
+            mkdir -p output
+            echo $(python -c "import sys; print(sys.version)") > output/result-${{ matrix.python-version }}.txt
+        
+        - name: Python Version Query
+          run: |
+            mkdir -p output
+            echo $(python -c "import sys; print(sys.version)") > output/result-${{ matrix.python-version }}.txt  
+        - name: Commit file   
+          run: |
+            git config --global user.name "bjloed"
+            git config --global user.email "bjloed@ajou.ac.kr"
+            git pull
+            git add output/*
+            git commit -m "Add output files for Python ${{ matrix.python-version }}"
+            git push
 
-      - name: Use artifact
-        uses: actions/upload-artifact@v3
-        with:
-          name: hw-python
-          path: output-${{ matrix.python-version }}
+        - name: Use artifact
+          uses: actions/upload-artifact@v3
+          with:
+            name: hw-python
+            path: output-${{ matrix.python-version }}
   
   jobs3:
     needs: [jobs1, jobs2]
@@ -82,32 +82,32 @@ jobs:
         matrix:
           python-version: ["3.10"] 
       steps:
-      - uses: actions/checkout@v2
-      - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v4
-        with:
-          python-version: ${{ matrix.python-version }}
+        - uses: actions/checkout@v2
+        - name: Set up Python ${{ matrix.python-version }}
+          uses: actions/setup-python@v4
+          with:
+            python-version: ${{ matrix.python-version }}
 
-      - name: Python Version Query
-        run: |
-          mkdir -p output
-          echo $(python -c "import sys; print(sys.version)") > output/result-${{ matrix.python-version }}.txt
-      
-      - name: Python Version Query
-        run: |
-          mkdir -p output
-          echo $(python -c "import sys; print(sys.version)") > output/result-${{ matrix.python-version }}.txt  
-      - name: Commit file   
-        run: |
-          git config --global user.name "bjloed"
-          git config --global user.email "bjloed@ajou.ac.kr"
-          git pull
-          git add output/*
-          git commit -m "Add output files for Python ${{ matrix.python-version }}"
-          git push
+        - name: Python Version Query
+          run: |
+            mkdir -p output
+            echo $(python -c "import sys; print(sys.version)") > output/result-${{ matrix.python-version }}.txt
+        
+        - name: Python Version Query
+          run: |
+            mkdir -p output
+            echo $(python -c "import sys; print(sys.version)") > output/result-${{ matrix.python-version }}.txt  
+        - name: Commit file   
+          run: |
+            git config --global user.name "bjloed"
+            git config --global user.email "bjloed@ajou.ac.kr"
+            git pull
+            git add output/*
+            git commit -m "Add output files for Python ${{ matrix.python-version }}"
+            git push
 
-      - name: Use artifact
-        uses: actions/upload-artifact@v3
-        with:
-          name: hw-python
-          path: output-${{ matrix.python-version }}
+        - name: Use artifact
+          uses: actions/upload-artifact@v3
+          with:
+            name: hw-python
+            path: output-${{ matrix.python-version }}
