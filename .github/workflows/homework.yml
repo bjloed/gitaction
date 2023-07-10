@@ -19,7 +19,7 @@ jobs:
 
     - name: Python Version Query
       run: |
-        mkdir output
+        mkdir -p output
         echo $(python -c "import sys; print(sys.version)") > output/result-${{ matrix.python-version }}.txt
 
     - name: Commit file   
