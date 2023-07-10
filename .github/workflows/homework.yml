@@ -37,12 +37,12 @@ jobs:
             name: hw-python
             path: output-${{ matrix.python-version }}
   jobs2:
-    needs: jobs1
     build:
       runs-on: ubuntu-latest
       strategy:
         matrix:
-          python-version: ["3.9"] 
+          python-version: ["3.9"]
+      needs: jobs1
       steps:
         - uses: actions/checkout@v2
         - name: Set up Python ${{ matrix.python-version }}
@@ -75,12 +75,12 @@ jobs:
             path: output-${{ matrix.python-version }}
   
   jobs3:
-    needs: [jobs1, jobs2]
     build:
       runs-on: ubuntu-latest
       strategy:
         matrix:
-          python-version: ["3.10"] 
+          python-version: ["3.10"]
+      needs: [jobs1, jobs2]
       steps:
         - uses: actions/checkout@v2
         - name: Set up Python ${{ matrix.python-version }}
