@@ -18,14 +18,17 @@ jobs:
         python-version: ${{ matrix.python-version }}
 
     - name: Python Version Query
-      run: echo $(python -c "import sys; print(sys.version)") > python_version.txt
+      run: |
+        mkdir output
+        echo $(python -c "import sys; print(sys.version)") > output/result-${{ matrix.python-version }}.txt
 
     - name: Commit file
       run: |
         git config --global user.name "bjloed"
         git config --global user.email "bjloed@ajou.ac.kr"
-        git add python_version.txt
-        git commit -m "add python_version.txt"
+        git add output/*
+        git commit -m "add output directory"
+        git push
 
     - name: Use artifact
       uses: actions/upload-artifact@v3
