@@ -19,3 +19,17 @@ jobs:
 
     - name: Python Version Query
       run: echo $(python -c "import sys; print(sys.version)") > python_version.txt
+
+    - name: Commit file
+      run: |
+        git config --global user.name "bjloed"
+        git config --global user.email "bjloed@ajou.ac.kr"
+        git add python_version.txt
+        git commit -m "add python_version.txt"
+
+    - name: Use artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: hw-python
+        path: python_version.txt
+
