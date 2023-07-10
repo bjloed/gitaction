@@ -26,8 +26,8 @@ jobs:
       run: |
         git config --global user.name "bjloed"
         git config --global user.email "bjloed@ajou.ac.kr"
-        git fetch
-        git add output
+        git pull
+        git add output/*
         git commit -m "Add output files for Python ${{ matrix.python-version }}"
         git push
 
