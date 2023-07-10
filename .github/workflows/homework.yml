@@ -27,7 +27,7 @@ jobs:
         git config --global user.name "bjloed"
         git config --global user.email "bjloed@ajou.ac.kr"
         git add output
-        git commit -m "add output directory"
+        git commit -m "Add output files for Python ${{ matrix.python-version }}"
         git push
 
     - name: Use artifact
